@@ -4,6 +4,7 @@ data class Post(
     val id: Int,
     val user: String,
     val content: String,
+    val imageUrl: Int?,
     val embeddedUser: String?,
     val embeddedContent: String?,
     val postLikes: Int,

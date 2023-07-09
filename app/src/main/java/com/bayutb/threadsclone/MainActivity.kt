@@ -17,6 +17,7 @@ import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DataDummy.generate()
         setContent {
             ThreadsCloneTheme {
                 // A surface container using the 'background' color from the theme
@@ -24,26 +25,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    DataDummy.generate()
-                    HomeScreen(posts = DataDummy.posts)
+                    App()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ThreadsCloneTheme {
-        Greeting("Android")
     }
 }

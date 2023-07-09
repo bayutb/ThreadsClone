@@ -38,14 +38,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -73,7 +72,7 @@ fun HomeScreen(
             .padding(horizontal = 8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        LazyColumn(state = listState) {
+        LazyColumn(state = listState, verticalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
                 Header(fabVisibility = fabVisibility)
             }
@@ -89,7 +88,7 @@ fun Header(fabVisibility: Boolean, modifier: Modifier = Modifier) {
     Log.d("Status", "Tes $fabVisibility")
     val density = LocalDensity.current
     AnimatedVisibility(modifier = modifier,
-        visible = fabVisibility  ,
+        visible = fabVisibility,
         enter = slideInVertically {
             with(density) { -40.dp.roundToPx() }
         } + fadeIn(),
@@ -123,7 +122,7 @@ fun ItemPost(modifier: Modifier = Modifier, post: Post) {
             ) {
                 Box(contentAlignment = Alignment.BottomEnd) {
                     Image(
-                        painter = painterResource(id = R.drawable.baseline_account_circle_24),
+                        painter = painterResource(id = R.drawable.profile),
                         contentDescription = null,
                         modifier = modifier
                             .size(48.dp)
@@ -181,7 +180,7 @@ fun ItemPost(modifier: Modifier = Modifier, post: Post) {
                         Image(
                             painter = painterResource(id = R.drawable.baseline_verified_24),
                             contentDescription = null,
-                            colorFilter = ColorFilter.tint(Color.Blue),
+                            colorFilter = ColorFilter.tint(colorResource(id = R.color.verified_blue)),
                         )
 
                     }
@@ -195,6 +194,8 @@ fun ItemPost(modifier: Modifier = Modifier, post: Post) {
                     text = post.content,
                     modifier.padding(bottom = 8.dp)
                 )
+
+
 
                 if (post.embeddedContent != null) {
                     ElevatedCard(
@@ -236,6 +237,14 @@ fun ItemPost(modifier: Modifier = Modifier, post: Post) {
                             Text(text = "${post.embeddedLikes} likes", color = Color.Gray)
                         }
                     }
+                } else if(post.imageUrl != null) {
+                    Image(
+                        painter = painterResource(id = R.drawable.kitchen_set),
+                        contentDescription = "Image",
+                        modifier = modifier.clip(
+                            shape = RoundedCornerShape(8.dp)
+                        )
+                    )
                 }
 
                 Row(
@@ -244,14 +253,14 @@ fun ItemPost(modifier: Modifier = Modifier, post: Post) {
                 ) {
                     Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Like")
                     Icon(
-                        painter = painterResource(id = R.drawable.baseline_chat_bubble_outline_24),
+                        painter = painterResource(id = R.drawable.comment_blank_svgrepo_com),
                         contentDescription = "Comment"
                     )
                     Icon(
-                        painter = painterResource(id = R.drawable.baseline_loop_24),
+                        painter = painterResource(id = R.drawable.retweet_round_svgrepo_com),
                         contentDescription = "Retweet"
                     )
-                    Icon(imageVector = Icons.Default.Send, contentDescription = "Send")
+                    Icon(painter = painterResource(id = R.drawable.send_svgrepo_com), contentDescription = "Send")
                 }
 
                 Row(

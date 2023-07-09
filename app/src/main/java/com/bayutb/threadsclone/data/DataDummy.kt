@@ -1,5 +1,6 @@
 package com.bayutb.threadsclone.data
 
+import com.bayutb.threadsclone.R
 import kotlin.random.Random
 
 class DataDummy {
@@ -9,12 +10,13 @@ class DataDummy {
         val posts:List<Post> = _posts
 
         fun generate() {
-            repeat(30) {
+            repeat(10) {
                 _posts.add(
                     Post(
                         id = it,
                         user = "bayutb123",
                         content = "Kin bikin clone thread",
+                        imageUrl = R.drawable.kitchen_set,
                         embeddedUser = null,
                         embeddedContent = null,
                         postLikes = 9999,
@@ -28,6 +30,7 @@ class DataDummy {
                         id = it,
                         user = "bayutb123",
                         content = "Threads bisa disebut kloning Twitter berbasis teks dari Instagram, jejaring sosial yang dibeli Facebook lebih dari satu dekade lalu dan menjadi aplikasi paling populer di dunia untuk berbagi foto dan video.",
+                        imageUrl = null,
                         embeddedUser = null,
                         embeddedContent = null,
                         postLikes = 9999,
@@ -41,6 +44,7 @@ class DataDummy {
                         id = it,
                         user = "bayutb123",
                         content = "FOMO bikin thread? \nFomo bikin clone appnya lah",
+                        imageUrl = null,
                         embeddedUser = "Orang lain ${Random.nextInt(1000, 9999)}",
                         embeddedContent = "FOMO bikin thread",
                         postLikes = 9999,
