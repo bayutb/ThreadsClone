@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bayutb.threadsclone.data.DataDummy
 import com.bayutb.threadsclone.ui.screens.activity.components.ActivityList
 import com.bayutb.threadsclone.ui.screens.activity.components.TopAppBar
 import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
@@ -29,8 +30,8 @@ fun ActivityScreen(
     val filter = listOf("All", "Requests", "Replies", "Mentions")
     Scaffold(
         topBar = { TopAppBar(modifier) }
-    ) {
-        Column(modifier = modifier.padding(it)) {
+    ) { paddingValues ->
+        Column(modifier = modifier.padding(paddingValues)) {
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp),
@@ -52,8 +53,8 @@ fun ActivityScreen(
                 }
             )
             LazyColumn(contentPadding = PaddingValues(16.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp),content = {
-                items(20) {
-                    ActivityList()
+                items(DataDummy.activityUser) {
+                    ActivityList(activityUser = it)
                 }
             })
         }

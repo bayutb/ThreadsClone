@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.sp
 import com.bayutb.threadsclone.R
 import com.bayutb.threadsclone.data.DataDummy
 import com.bayutb.threadsclone.data.Post
-import com.bayutb.threadsclone.ui.screens.home.components.HomePost
+import com.bayutb.threadsclone.ui.screens.profile.components.ProfilePost
 import com.bayutb.threadsclone.ui.screens.profile.components.TopAppBar
 import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
 
@@ -233,7 +233,7 @@ fun ThreadsList(
             contentPadding = PaddingValues(vertical = 8.dp)
         ) {
             items(posts) {
-                HomePost(post = it)
+                ProfilePost(post = it)
             }
         }
     }

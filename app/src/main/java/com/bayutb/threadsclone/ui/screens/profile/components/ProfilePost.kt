@@ -56,15 +56,7 @@ fun ProfilePost(modifier: Modifier = Modifier, post: Post) {
                         modifier = modifier
                             .size(48.dp)
                     )
-                    Icon(
-                        imageVector = Icons.Default.AddCircle,
-                        contentDescription = "add",
-                        modifier = modifier
-                            .size(24.dp)
-                            .background(
-                                MaterialTheme.colorScheme.surface, shape = CircleShape
-                            )
-                    )
+
                 }
                 Divider(
                     color = Color.Gray,

@@ -2,12 +2,15 @@ package com.bayutb.threadsclone.data
 
 import com.bayutb.threadsclone.R
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 class DataDummy {
 
     companion object {
         private val _posts = mutableListOf<Post>()
+        private val _activityUsers = mutableListOf<User>()
         val posts:List<Post> = _posts
+        val activityUser:List<User> = _activityUsers
         val user: User = User(1, "Bayu Tantra Bramandhita", "bayutb123", "Newbie Android and Web Developer\n\uD83C\uDF31 On Eternal Learn", 6969, true)
 
         fun generate() {
@@ -53,6 +56,9 @@ class DataDummy {
                         replies = 500,
                         embeddedReplies = 600
                     )
+                )
+                _activityUsers.add(
+                    User(it, "User $it", "user${Random.nextInt(100, 999)}", "Newbie Android and Web Developer\n\uD83C\uDF31 On Eternal Learn", 6969, false)
                 )
             }
         }
