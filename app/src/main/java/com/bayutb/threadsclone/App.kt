@@ -29,6 +29,7 @@ import com.bayutb.threadsclone.data.DataDummy
 import com.bayutb.threadsclone.ui.components.BottomBarIcon
 import com.bayutb.threadsclone.ui.screens.Screen
 import com.bayutb.threadsclone.ui.screens.home.HomeScreen
+import com.bayutb.threadsclone.ui.screens.profile.ProfileScreen
 import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
 
 @Composable
@@ -46,6 +47,9 @@ fun App(modifier: Modifier = Modifier) {
         ) {
             composable(Screen.Home.route) {
                 HomeScreen(posts = DataDummy.posts)
+            }
+            composable(Screen.Profile.route) {
+                ProfileScreen()
             }
         }
     }
@@ -74,7 +78,9 @@ fun BottomBar(modifier: Modifier, navController: NavController) {
         IconButton(onClick = { /*TODO*/ }) {
             Icon(imageVector = BottomBarIcon.Favourite.vector, contentDescription = "Favourite")
         }
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = {
+            navController.navigate(Screen.Profile.route)
+        }) {
             Icon(imageVector = BottomBarIcon.Profile.vector, contentDescription = "Profile")
         }
     }
