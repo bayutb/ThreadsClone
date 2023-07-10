@@ -28,9 +28,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.bayutb.threadsclone.R
+import com.bayutb.threadsclone.data.User
 
 @Composable
-fun ActivityList(modifier: Modifier = Modifier) {
+fun ActivityList(modifier: Modifier = Modifier, activityUser: User) {
 
     Box(modifier = modifier.fillMaxWidth()) {
         Row(
@@ -39,7 +40,7 @@ fun ActivityList(modifier: Modifier = Modifier) {
         ) {
             Box(contentAlignment = Alignment.BottomEnd) {
                 Image(
-                    painter = painterResource(id = R.drawable.baseline_account_circle_24),
+                    painter = painterResource(id = R.drawable.profile_sample),
                     contentDescription = "Profile Picture",
                     modifier = modifier.size(50.dp)
                 )
@@ -53,7 +54,7 @@ fun ActivityList(modifier: Modifier = Modifier) {
                 )
             }
             Column(modifier.weight(1f)) {
-                Text(text = "sser12", fontWeight = FontWeight.Bold)
+                Text(text = activityUser.userId, fontWeight = FontWeight.Bold)
                 Text(text = "Followed you", color = Color.Gray)
             }
 
