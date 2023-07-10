@@ -8,6 +8,7 @@ class DataDummy {
     companion object {
         private val _posts = mutableListOf<Post>()
         val posts:List<Post> = _posts
+        val user: User = User(1, "Bayu Tantra Bramandhita", "bayutb123", "Newbie Android and Web Developer\n\uD83C\uDF31 On Eternal Learn", 6969, true)
 
         fun generate() {
             repeat(10) {

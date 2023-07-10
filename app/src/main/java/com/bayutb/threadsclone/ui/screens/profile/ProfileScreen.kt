@@ -54,6 +54,7 @@ import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
 
 @Composable
 fun ProfileScreen(modifier: Modifier = Modifier) {
+    val user = DataDummy.user
     var tabIndex by remember {
         mutableStateOf(0)
     }
@@ -77,7 +78,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                     Row {
                         Column(modifier = modifier.weight(1f)) {
                             Text(
-                                text = "Bayu Tantra Bramandhita",
+                                text = user.name,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 24.sp
                             )
@@ -86,7 +87,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                                 horizontalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 Text(
-                                    text = "bayutb123",
+                                    text = user.userId,
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium
                                 )
@@ -108,22 +109,24 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                                 contentDescription = "Profile Picture",
                                 modifier = modifier.size(65.dp)
                             )
-                            Image(
-                                painter = painterResource(id = R.drawable.baseline_verified_24),
-                                contentDescription = "Verified",
-                                modifier.background(
-                                    color = Color.White,
-                                    shape = CircleShape
-                                ),
-                                colorFilter = ColorFilter.tint(
-                                    color = colorResource(
-                                        id = R.color.verified_blue
+                            if (user.isVerified) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.baseline_verified_24),
+                                    contentDescription = "Verified",
+                                    modifier.background(
+                                        color = Color.White,
+                                        shape = CircleShape
+                                    ),
+                                    colorFilter = ColorFilter.tint(
+                                        color = colorResource(
+                                            id = R.color.verified_blue
+                                        )
                                     )
                                 )
-                            )
+                            }
                         }
                     }
-                    Text(text = "Newbie Android and Web Developer", fontSize = 14.sp)
+                    Text(text = user.description ?: "", fontSize = 14.sp)
                     Row(
                         modifier.padding(vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -153,7 +156,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                                     .background(color = MaterialTheme.colorScheme.primaryContainer)
                             )
                         }
-                        Text(text = "69 followers", color = Color.Gray, fontSize = 14.sp)
+                        Text(text = "${user.followers} followers", color = Color.Gray, fontSize = 14.sp)
 
                     }
 
