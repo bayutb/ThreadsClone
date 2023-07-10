@@ -1,18 +1,10 @@
 package com.bayutb.threadsclone
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -28,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.bayutb.threadsclone.data.DataDummy
 import com.bayutb.threadsclone.ui.components.BottomBarIcon
 import com.bayutb.threadsclone.ui.screens.Screen
+import com.bayutb.threadsclone.ui.screens.activity.ActivityScreen
 import com.bayutb.threadsclone.ui.screens.home.HomeScreen
 import com.bayutb.threadsclone.ui.screens.profile.ProfileScreen
 import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
@@ -47,6 +40,9 @@ fun App(modifier: Modifier = Modifier) {
         ) {
             composable(Screen.Home.route) {
                 HomeScreen(posts = DataDummy.posts)
+            }
+            composable(Screen.Activity.route) {
+                ActivityScreen()
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()
@@ -75,7 +71,9 @@ fun BottomBar(modifier: Modifier, navController: NavController) {
         IconButton(onClick = { /*TODO*/ }) {
             Icon(imageVector = BottomBarIcon.Add.vector, contentDescription = "Add")
         }
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = {
+            navController.navigate(Screen.Activity.route)
+        }) {
             Icon(imageVector = BottomBarIcon.Favourite.vector, contentDescription = "Favourite")
         }
         IconButton(onClick = {
