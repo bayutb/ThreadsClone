@@ -23,6 +23,7 @@ import com.bayutb.threadsclone.ui.screens.Screen
 import com.bayutb.threadsclone.ui.screens.activity.ActivityScreen
 import com.bayutb.threadsclone.ui.screens.home.HomeScreen
 import com.bayutb.threadsclone.ui.screens.profile.ProfileScreen
+import com.bayutb.threadsclone.ui.screens.search.SearchScreen
 import com.bayutb.threadsclone.ui.theme.ThreadsCloneTheme
 
 @Composable
@@ -47,6 +48,9 @@ fun App(modifier: Modifier = Modifier) {
             composable(Screen.Profile.route) {
                 ProfileScreen()
             }
+            composable(Screen.Search.route) {
+                SearchScreen()
+            }
         }
     }
 }
@@ -65,7 +69,9 @@ fun BottomBar(modifier: Modifier, navController: NavController) {
         }) {
             Icon(imageVector = BottomBarIcon.Home.vector, contentDescription = "Home")
         }
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = {
+            navController.navigate(Screen.Search.route)
+        }) {
             Icon(imageVector = BottomBarIcon.Search.vector, contentDescription = "Search")
         }
         IconButton(onClick = { /*TODO*/ }) {
@@ -91,6 +97,41 @@ fun BottomBar(modifier: Modifier, navController: NavController) {
 @Composable
 fun PreviewApp() {
     ThreadsCloneTheme {
+        DataDummy.generate()
         App()
+    }
+}
+
+@Preview(
+    showBackground = true,
+    device = "id:pixel_5"
+)
+@Composable
+fun PreviewHome() {
+    ThreadsCloneTheme {
+        DataDummy.generate()
+        ProfileScreen()
+    }
+}
+
+@Preview(
+    showBackground = true,
+    device = "id:pixel_5"
+)
+@Composable
+fun PreviewProfile() {
+    ThreadsCloneTheme {
+        ActivityScreen()
+    }
+}
+
+@Preview(
+    showBackground = true,
+    device = "id:pixel_5"
+)
+@Composable
+fun PreviewSearch() {
+    ThreadsCloneTheme {
+        SearchScreen()
     }
 }
