@@ -43,13 +43,13 @@ fun App(modifier: Modifier = Modifier) {
                 HomeScreen(posts = DataDummy.posts)
             }
             composable(Screen.Activity.route) {
-                ActivityScreen()
+                ActivityScreen(data = DataDummy.activityUser)
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()
             }
             composable(Screen.Search.route) {
-                SearchScreen()
+                SearchScreen(data = DataDummy.recommendedUser)
             }
         }
     }
@@ -109,7 +109,6 @@ fun PreviewApp() {
 @Composable
 fun PreviewHome() {
     ThreadsCloneTheme {
-        DataDummy.generate()
         ProfileScreen()
     }
 }
@@ -121,7 +120,7 @@ fun PreviewHome() {
 @Composable
 fun PreviewProfile() {
     ThreadsCloneTheme {
-        ActivityScreen()
+        ActivityScreen(data = DataDummy.activityUser)
     }
 }
 
@@ -132,6 +131,6 @@ fun PreviewProfile() {
 @Composable
 fun PreviewSearch() {
     ThreadsCloneTheme {
-        SearchScreen()
+        SearchScreen(data = DataDummy.recommendedUser)
     }
 }

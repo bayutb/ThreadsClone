@@ -9,8 +9,10 @@ class DataDummy {
     companion object {
         private val _posts = mutableListOf<Post>()
         private val _activityUsers = mutableListOf<User>()
+        private val _recommendedUsers = mutableListOf<UserRecommendations>()
         val posts:List<Post> = _posts
         val activityUser:List<User> = _activityUsers
+        val recommendedUser: List<UserRecommendations> = _recommendedUsers
         val user: User = User(1, "Bayu Tantra Bramandhita", "bayutb123", "Newbie Android and Web Developer\n\uD83C\uDF31 On Eternal Learn", 6969, true)
 
         fun generate() {
@@ -59,6 +61,15 @@ class DataDummy {
                 )
                 _activityUsers.add(
                     User(it, "User $it", "user${Random.nextInt(100, 999)}", "Newbie Android and Web Developer\n\uD83C\uDF31 On Eternal Learn", 6969, false)
+                )
+                _recommendedUsers.add(
+                    UserRecommendations(
+                        id = it,
+                        name = "user $it",
+                        userId = "user$it",
+                        followers = Random.nextInt(100, 1000),
+                        mutual = Random.nextInt(0,2)
+                    )
                 )
             }
         }
