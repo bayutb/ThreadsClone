@@ -18,3 +18,6 @@ Click run app or press `Shift + F10`.
 Make sure your Android Studio have an Android Emulator installed or connected with Physical Android Device
 
 This can take up to 5 minutes until the app will automatically launch on your emulator or physical device
+
+## Technology Used
+[![My Skills](https://skillicons.dev/icons?i=kotlin,androidstudio,gradle)](https://skillicons.dev)
